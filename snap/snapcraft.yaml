@@ -1,0 +1,35 @@
+name: lxqt-build-tools-snap
+base: core18
+summary:  Build tools for the LXQt desktop environment (unofficial)
+description: |
+  This package contains the tools that are needed by the LXQt build process.
+  This is the unofficial snap packaging.
+  Upstream: https://github.com/lxqt/lxqt-build-tools
+
+grade: stable
+confinement: strict
+architectures:
+  - build-on: all
+
+slots:
+  lxqt-build-tools-snap:
+    interface: content
+    read:
+      - /
+
+adopt-info: lxqt-build-tools
+parts:
+  lxqt-build-tools:
+    source: https://github.com/lxqt/lxqt-build-tools.git
+    source-type: git
+    plugin: cmake
+    configflags:
+      - -DCMAKE_INSTALL_PREFIX=/usr
+    build-packages:
+      - libglib2.0-dev
+      - qtbase5-dev
+      - qttools5-dev
+      - qttools5-dev-tools
+    override-pull: |
+      snapcraftctl pull
+      snapcraftctl set-version "rel."`git describe --tags`

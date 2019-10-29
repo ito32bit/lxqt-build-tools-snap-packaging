@@ -8,8 +8,6 @@ description: |
 
 grade: stable
 confinement: strict
-architectures:
-  - build-on: all
 
 slots:
   lxqt-build-tools-snap:

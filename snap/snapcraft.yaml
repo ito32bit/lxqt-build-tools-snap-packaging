@@ -32,4 +32,4 @@ parts:
       - qttools5-dev-tools
     override-pull: |
       snapcraftctl pull
-      snapcraftctl set-version "rel."`git describe --tags`
+      snapcraftctl set-version `git describe --tags`

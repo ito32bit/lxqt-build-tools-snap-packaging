@@ -11,12 +11,6 @@ confinement: strict
 architectures:
   - build-on: all
 
-slots:
-  lxqt-build-tools-snap:
-    interface: content
-    read:
-      - /
-
 adopt-info: lxqt-build-tools
 parts:
   lxqt-build-tools:

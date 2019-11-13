@@ -17,11 +17,17 @@ parts:
     plugin: cmake
     configflags:
       - -DCMAKE_INSTALL_PREFIX=/usr
+
+    override-pull: |
+      snapcraftctl pull
+      ver=`git describe --tags --always`
+      cd $SNAPCRAFT_PROJECT_DIR
+      ver=$ver-`git describe --tags --always` || ver=$ver`date +%y%m%d`
+      echo "Set version: $ver"
+      snapcraftctl set-version $ver
+#
     build-packages:
       - libglib2.0-dev
       - qtbase5-dev
       - qttools5-dev
       - qttools5-dev-tools
-    override-pull: |
-      snapcraftctl pull
-      snapcraftctl set-version `git describe --tags`

@@ -14,6 +14,7 @@ parts:
   lxqt-build-tools:
     source: https://github.com/lxqt/lxqt-build-tools.git
     source-type: git
+    source-commit: 5a489c1774df9443eda76ea1c188d5ee8e7db7fd
     plugin: cmake
     configflags:
       - -DCMAKE_INSTALL_PREFIX=/usr
